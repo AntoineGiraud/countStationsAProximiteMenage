@@ -145,8 +145,9 @@ def aggregateTowardsSridu(menages, personnes, nbLignes):
         updateAvg(menage['1kmCountSTMcountStopTimesDimanche'], factPers, sridu['1kmCountSTMcountStopTimesDimanche'])
         updateAvg(menage['500mCountSTMcountStopTimesDimanche'], factPers, sridu['500mCountSTMcountStopTimesDimanche'])
         updateAvg(pers['age'], factPers, sridu['age'])
-        valPermis = pers['permis'] if pers['permis'] <= 2 else 1
-        updateAvg(valPermis-1, factPers, sridu['permis'])
+        if pers['permis'] < 5:
+            valPermis = 0 if pers['permis'] >= 2 else 1
+            updateAvg(valPermis, factPers, sridu['permis'])
         sridu['pop'] += factPers
         if pers['sexe'] == 1:
             sridu['hommes'] += factPers
