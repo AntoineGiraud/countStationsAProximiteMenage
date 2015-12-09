@@ -119,11 +119,11 @@ with open('output/stops_amt_withCountStopTimes.csv', 'w', newline='') as csvfile
 
 print("----- Lecture des fichiers stops & stops_time STM ------")
 
-stopsAMT, labelsAMT = loadFile('input/GTFS/stops_stm.txt', 8995, {})
-countStopTimesPerStop('input/GTFS/stop_times_stm.txt', 5136728, {}, stopsAMT)
+stopsSTM, labelsSTM = loadFile('input/GTFS/stops_stm.txt', 8995, {})
+countStopTimesPerStop('input/GTFS/stop_times_stm.txt', 5136728, {}, stopsSTM)
 
 with open('output/stops_stm_withCountStopTimes.csv', 'w', newline='') as csvfile:
     outputFile = csv.writer(csvfile, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    outputFile.writerow(labelsAMT)
-    for id, row in stopsAMT.items():
+    outputFile.writerow(labelsSTM)
+    for id, row in stopsSTM.items():
         outputFile.writerow(list(row.values()))
